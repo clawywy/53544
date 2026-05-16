@@ -1,0 +1,5 @@
+funcion calcular() {
+X = 10;
+escribir(X);
+escribir("Proceso terminado");
+}
