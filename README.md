@@ -6,7 +6,8 @@ Este proyecto consiste en un analizador léxico, sintáctico y traductor automá
 - Tener instalado **Node.js** en el sistema (versión v18 o superior recomendada).
 
 ##  Instalación de Dependencias
-1. Descargue o clone este repositorio en su máquina local.
+1. Descargue o clone este repositorio en su máquina local:
+git clone https://github.com/clawywy/53544.git
 2. Abra una terminal (consola) ubicada exactamente en la carpeta raíz de este proyecto.
 3. Ejecute el siguiente comando para instalar las librerías necesarias de ANTLR4:
 npm install
