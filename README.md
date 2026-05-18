@@ -16,7 +16,7 @@ Para facilitar la corrección, se incluyen los cuatro archivos de texto solicita
 * `input_correcto_1.txt` e `input_correcto_2.txt`: Contienen código fuente válido (reconocimiento correcto).
 * `input_incorrecto_1.txt` e `input_incorrecto_2.txt`: Contienen código con errores forzados (reconocimiento incorrecto).
 
-**Para probar distintos archivos:** Por defecto, el analizador lee `input_correcto_1.txt`. Si desea probar los demás ejemplos, por favor modifique el nombre del archivo en la línea donde se ubica la función `fs.readFileSync` dentro de `index.js`.no se olvide de guardar el index.js antes de ejecutar.
+**Para probar distintos archivos:** Por defecto, el analizador lee `input_correcto_1.txt`. Si desea probar los demás ejemplos, ponga en la terminal node index.js (ej:input_incorrecto_1.txt) y se ejecutara ese input automaticamente.
 ##  Ejecucion
 Para ejecutar el programa se debe escribir en la terminal lo siguiente:
 node index.js

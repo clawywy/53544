@@ -5,12 +5,13 @@ import LenguajeParser from './generated/LenguajeParser.js';
 import TraductorVisitor from './TraductorVisitor.js';
 
 function main() {
-    let input;
+   let input;
+    const archivoInput = process.argv[2] || 'input_correcto_1.txt';
+    
     try {
-        // Leemos el archivo input.txt
-        input = fs.readFileSync('input_correcto_1.txt', 'utf8');
+        input = fs.readFileSync(archivoInput, 'utf8');
     } catch (err) {
-        console.error("No se encontró el archivo input.txt");
+        console.error(`No se encontró el archivo: ${archivoInput}`);
         return;
     }
 
@@ -36,7 +37,7 @@ function main() {
     if (parser.syntaxErrorsCount > 0) {
         console.error("\n❌ ERROR LÉXICO/SINTÁCTICO: Se encontraron errores en el archivo.");
         console.error("Fijate en los mensajes de arriba para ver la línea y la causa del problema.");
-        return; // Corta la ejecución para no traducir código roto
+        return; 
     } else {
         console.log("\n✅ ANÁLISIS EXITOSO: No se encontraron errores léxicos ni sintácticos. La entrada es CORRECTA.");
     }
@@ -57,13 +58,13 @@ function main() {
     console.log("              EJECUCIÓN DEL INTÉRPRETE           ");
     console.log("=================================================");
     
-    // Truco: Simulamos el 'prompt' del navegador para que Node no explote
     global.prompt = (mensaje) => {
-        console.log(`[Prompt Interactivo]: ${mensaje}`);
-        return '"Santi"'; // Valor simulado que ingresa el usuario
+        process.stdout.write(`\n[Input Requerido] ${mensaje} `);
+        const buffer = Buffer.alloc(1024);
+        const bytesRead = fs.readSync(0, buffer, 0, 1024, null);
+        return buffer.toString('utf8', 0, bytesRead).trim();
     };
 
-    // Evaluamos el código traducido sacando el nombre de la función dinámicamente del árbol
     const nombreFuncion = tree.funcion()[0].ID().getText();
     eval(codigoJS + `\n\n${nombreFuncion}();`);
     console.log("\n¡Ejecución finalizada!");
